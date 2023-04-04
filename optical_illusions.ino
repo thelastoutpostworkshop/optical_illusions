@@ -33,7 +33,7 @@ void loop(void) {
 }
 
 void drawCafeWall() {
-  int numRows = 6;
+  int numRows = 28;
   int rowHeight = 10;
   int squareWidth = 10;
   int lineWidth = 2;
