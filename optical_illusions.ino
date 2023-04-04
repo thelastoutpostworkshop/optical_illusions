@@ -25,11 +25,32 @@ void setup(void) {
   uint16_t identifier = tft.readID();
   tft.begin(identifier);
 
-  drawHermannGrid();
+  drawCafeWall();
 }
 
 void loop(void) {
 
+}
+
+void drawCafeWall() {
+  int numRows = 6;
+  int rowHeight = 10;
+  int squareWidth = 10;
+  int lineWidth = 2;
+  int offset = 3;
+
+  clearScreen();
+
+  for (int i = 0; i < numRows; i++) {
+    for (int j = 0; j < SCREEN_WIDTH / squareWidth; j++) {
+      if (i % 2 == 0) {
+        tft.fillRect(j * (squareWidth * 2) + (i % 4 == 0 ? 0 : squareWidth), i * (rowHeight + lineWidth), squareWidth, rowHeight, COLOR_WHITE);
+      } else {
+        tft.fillRect(j * (squareWidth * 2) + (i % 4 == 1 ? 0 : squareWidth), i * (rowHeight + lineWidth), squareWidth, rowHeight, COLOR_WHITE);
+      }
+    }
+    tft.fillRect(0, i * (rowHeight + lineWidth) + rowHeight, SCREEN_WIDTH, lineWidth, COLOR_WHITE);
+  }
 }
 
 void drawHermannGrid() {
