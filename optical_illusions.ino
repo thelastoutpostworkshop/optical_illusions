@@ -25,7 +25,8 @@ void setup(void) {
   uint16_t identifier = tft.readID();
   tft.begin(identifier);
 
-  drawCafeWall();
+//   drawCafeWall();
+//   drawHermannGrid();
 }
 
 void loop(void) {
