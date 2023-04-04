@@ -26,13 +26,32 @@ void setup(void)
     uint16_t identifier = tft.readID();
     tft.begin(identifier);
 
-    drawZollnerIllusion();
+    drawPenroseTriangle();
+    // drawZollnerIllusion();
     //   drawCafeWall();
     //   drawHermannGrid();
 }
 
 void loop(void)
 {
+}
+
+void drawPenroseTriangle()
+{
+    int centerX = SCREEN_WIDTH / 2;
+    int centerY = SCREEN_HEIGHT / 2;
+    int sideLength = 40;
+
+    clearScreen();
+
+    // Draw the Penrose Triangle
+    tft.drawLine(centerX - sideLength / 2, centerY + sideLength / 4, centerX + sideLength / 2, centerY + sideLength / 4, COLOR_WHITE);
+    tft.drawLine(centerX - sideLength / 2, centerY + sideLength / 4, centerX, centerY - sideLength / 2, COLOR_WHITE);
+    tft.drawLine(centerX + sideLength / 2, centerY + sideLength / 4, centerX, centerY - sideLength / 2, COLOR_WHITE);
+
+    // Draw the overlapping lines
+    tft.drawLine(centerX - sideLength / 2, centerY + sideLength / 4, centerX, centerY + sideLength / 4 - sideLength / 2, COLOR_WHITE);
+    tft.drawLine(centerX + sideLength / 2, centerY + sideLength / 4, centerX, centerY + sideLength / 4 - sideLength / 2, COLOR_WHITE);
 }
 
 void drawZollnerIllusion()
